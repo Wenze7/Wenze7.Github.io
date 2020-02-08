@@ -7,17 +7,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类 - Seven7777777&#39;blog</title>
+<title>标签: hexo - Seven7777777&#39;blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Seven7777777&#39;blog">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/hexo/index.html">
 <meta property="og:site_name" content="Seven7777777&#39;blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:author" content="QiuPeng">
-<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -91,7 +90,7 @@
                 <a class="navbar-item"
                 href="/archives">归档</a>
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/categories">分类</a>
                 
                 <a class="navbar-item"
@@ -126,27 +125,113 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/%E6%95%99%E7%A8%8B/">
-            <span class="level-start">
-                <span class="level-item">教程</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">hexo</a></li>
+        </ul>
+        </nav>
     </div>
-</div></div>
+</div>
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-06T08:04:40.428Z">2020-02-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 615 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/">在腾讯云服务器上部署hexo博客</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="如何在腾讯云服务器上部署hexo博客"><a href="#如何在腾讯云服务器上部署hexo博客" class="headerlink" title="如何在腾讯云服务器上部署hexo博客"></a>如何在腾讯云服务器上部署hexo博客</h1><p>本人在搭建过程中遇到了很多问题，因此写一个教程贴来总结一下</p>
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><hr>
+<ul>
+<li>本地环境<ul>
+<li>macOS Catalina 10.15</li>
+<li>git</li>
+<li>node.js</li>
+<li>hexo</li>
+</ul>
+</li>
+<li>服务器端<ul>
+<li>腾讯云服务器 CentOS 7.6 64 Bit</li>
+<li>git</li>
+<li>node.js</li>
+<li>Nginx</li>
+</ul>
+</li>
+</ul>
+<h1 id="服务器端部署"><a href="#服务器端部署" class="headerlink" title="服务器端部署"></a>服务器端部署</h1><hr>
+<h3 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1.安装git"></a>1.安装git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装node-js"><a href="#2-安装node-js" class="headerlink" title="2.安装node.js"></a>2.安装node.js</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --silent --location https:&#x2F;&#x2F;rpm.nodesource.com&#x2F;setup_5.x | bash -</span><br></pre></td></tr></table></figure>
+<p> 使用 <code>git --version</code> 和 <code>node --version</code> 查看版本号</p>
+<h3 id="3-安装Nginx"><a href="#3-安装Nginx" class="headerlink" title="3.安装Nginx"></a>3.安装Nginx</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yuminstall nginx</span><br></pre></td></tr></table></figure>
+<p> 使用 <code>nginx -v</code>查看版本号</p>
+<h3 id="4-配置Nginx"><a href="#4-配置Nginx" class="headerlink" title="4.配置Nginx"></a>4.配置Nginx</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+<p> 进行以下修改<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">       listen       80 default_server;</span><br><span class="line">       listen       [::]:80 default_server;</span><br><span class="line">       server_name  www.seven7.xyz  seven7.xyz; #域名</span><br><span class="line">       root         &#x2F;home&#x2F;hexo; #网站的根目录 自行创建</span><br><span class="line">       #以下不作修改</span><br><span class="line">       # Load configuration files for the default server block.</span><br><span class="line">       include &#x2F;etc&#x2F;nginx&#x2F;default.d&#x2F;*.conf;</span><br><span class="line"></span><br><span class="line">       location &#x2F; &#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       error_page 404 &#x2F;404.html;</span><br><span class="line">           location &#x3D; &#x2F;40x.html &#123;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       error_page 500 502 503 504 &#x2F;50x.html;</span><br><span class="line">           location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><br>配置完成后保存退出，使用<code>nginx -t</code>查看配置是否有错误。查看运行状态：<code>systemctl status nginx</code>，显示<code>running</code>表示成功运行</p>
+<h3 id="5-创建git用户"><a href="#5-创建git用户" class="headerlink" title="5.创建git用户"></a>5.创建git用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd git</span><br><span class="line">chmod chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>在sudoers中找到下面内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Allow root to run any commands anywhere</span><br><span class="line">root    ALL&#x3D;(ALL)     ALL</span><br></pre></td></tr></table></figure>
+<p>并且在下面增加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git     ALL&#x3D;(ALL)     ALL</span><br></pre></td></tr></table></figure>
+<p>修改权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>使用su git切换到git用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 切换到git用户目录</span><br><span class="line">cd &#x2F;home&#x2F;git</span><br><span class="line"># 创建.ssh文件夹</span><br><span class="line">mkdir ~&#x2F;.ssh</span><br><span class="line"># 创建authorized_keys文件并编辑</span><br><span class="line">vim ~&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line"># 如果你还没有生成公钥，那么首先在本地电脑中执行 cat ~&#x2F;.ssh&#x2F;id_rsa.pub | pbcopy生成公钥</span><br><span class="line"># 再将公钥复制粘贴到authorized_keys</span><br><span class="line"># 保存关闭authorized_keys后，修改相应权限</span><br><span class="line">chmod 600 ~&#x2F;.ssh&#x2F;authorzied_keys</span><br><span class="line">chmod 700 ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
+<p>本地测试是否可以进行免密码登陆</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -v git@服务器IP地址</span><br></pre></td></tr></table></figure>
+<h3 id="6-建立git裸库"><a href="#6-建立git裸库" class="headerlink" title="6.建立git裸库"></a>6.建立git裸库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 回到git目录</span><br><span class="line">cd &#x2F;home&#x2F;git</span><br><span class="line"># 使用git用户创建git裸仓库，以blog.git为例</span><br><span class="line">git init --bare blog.git</span><br></pre></td></tr></table></figure>
+<p>使用下列命令修改用户组权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown git:git -R &#x2F;home&#x2F;hexo</span><br><span class="line">sudo chown git:git -R &#x2F;home&#x2F;git&#x2F;blog.git</span><br></pre></td></tr></table></figure>
+<h3 id="7-使用git-hooks同步网站根目录"><a href="#7-使用git-hooks同步网站根目录" class="headerlink" title="7.使用git-hooks同步网站根目录"></a>7.使用git-hooks同步网站根目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;blog.git&#x2F;hooks&#x2F;post-receive</span><br></pre></td></tr></table></figure>
+<p>在里面输入下列内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">git --work-tree&#x3D;&#x2F;home&#x2F;hexo --git-dir&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git checkout -f</span><br></pre></td></tr></table></figure>
+<p>保存退出后执行 <code>chmod +x post-receive</code>修改权限</p>
+<p>到这里服务器端就已经配置完成了</p>
+<h1 id="本地端配置"><a href="#本地端配置" class="headerlink" title="本地端配置"></a>本地端配置</h1><hr>
+<p>打开hexo根目录下的_config.yml文件，进行下列配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@你的服务器IP:&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>然后发布</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
                 
 
 
