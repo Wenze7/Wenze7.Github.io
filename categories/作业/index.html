@@ -191,7 +191,7 @@ var _hmt = _hmt || [];
 <p>对于上例中的地震预报问题,假设预报一周内发生地震,可以预先组织抗震 救灾,由此带来的防灾成本会有 2500 万元,而当地震确实发生时,由于地震造 成的直接损失会有 1000 万元;假设不预报将发生地震而地震又发生了,造成的 损失会达到 5000 万元。请问在观察到明显的生物异常反应后,是否应当预报一周内将发生地震?</p>
 </blockquote>
 <p>根据题意可得：<br>实际发生地震且预报发生地震的损失$\lambda_1^1=3500$<br>实际发生地震却不预报发生地震的损失$\lambda_1^2=5000$<br>实际不发生地震却预报发生地震的损失$\lambda_2^1=2500$<br>实际不发生地震且不预报发生地震的损失$\lambda_2^2=0$</p>
-<p>$<br>R(\alpha_1|X)=\sum_{j=1}^2\lambda_j^1P(w_j|x)=\lambda_1^1P(w_1|x)+\lambda_2^1P(w_2|x)=3500<em>\displaystyle\frac{P(x|w_1)P(w_1)}{P(x)}+2500</em>\displaystyle\frac{P(x|w_2)P(w_2)}{P(x)}=\displaystyle\frac{550}{P(x)}=3055.6<br>$</p>
+<p>$<br>R(\alpha_1|X)=\sum_{j=1}^2\lambda_j^1P(w_j|x)=\lambda_1^1P(w_1|x)+\lambda_2^1P(w_2|x)=3500*\displaystyle\frac{P(x|w_1)P(w_1)}{P(x)}+2500*\displaystyle\frac{P(x|w_2)P(w_2)}{P(x)}=\displaystyle\frac{550}{P(x)}=3055.6<br>$</p>
 <p>$R(\alpha_2|X)$<br>$=\sum_{j=1}^2\lambda_j^2P(w_j|x)$<br>$=\lambda_1^2P(w_1|x)+\lambda_2^2P(w_2|x)$<br>$=5000*\displaystyle\frac{P(x|w_1)P(w_1)}{P(x)}$<br>$=\displaystyle\frac{500}{P(x)}=2777.8$</p>
 <p>故$R(\alpha_1|X)=3055.6&gt;R(\alpha_2|X)=2777.8$，所以不应当预报一周内将发生地震</p>
 
@@ -448,25 +448,6 @@ var _hmt = _hmt || [];
         
         <article class="media">
             
-            <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在腾讯云服务器上部署hexo博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T08:04:40.428Z">2020-02-06</time></div>
-                    <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在腾讯云服务器上部署hexo博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/02/06/hello-world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="hello-world">
@@ -479,6 +460,25 @@ var _hmt = _hmt || [];
                     <a href="/2020/02/06/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hello-world</a>
                     <p class="is-size-7 is-uppercase">
                         
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在腾讯云服务器上部署hexo博客">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T08:04:40.428Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在腾讯云服务器上部署hexo博客</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
                     </p>
                 </div>
             </div>
@@ -576,25 +576,6 @@ var _hmt = _hmt || [];
         
         <article class="media">
             
-            <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在腾讯云服务器上部署hexo博客">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T08:04:40.428Z">2020-02-06</time></div>
-                    <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在腾讯云服务器上部署hexo博客</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2020/02/06/hello-world/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="hello-world">
@@ -607,6 +588,25 @@ var _hmt = _hmt || [];
                     <a href="/2020/02/06/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">hello-world</a>
                     <p class="is-size-7 is-uppercase">
                         
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="在腾讯云服务器上部署hexo博客">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-06T08:04:40.428Z">2020-02-06</time></div>
+                    <a href="/2020/02/06/%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E9%83%A8%E7%BD%B2hexo%E5%8D%9A%E5%AE%A2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">在腾讯云服务器上部署hexo博客</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a>
                     </p>
                 </div>
             </div>
