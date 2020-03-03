@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-03T07:34:45.537Z">
-<meta property="article:modified_time" content="2020-03-03T12:35:04.414Z">
+<meta property="article:modified_time" content="2020-03-03T14:57:09.023Z">
 <meta property="article:author" content="QiuPeng">
 <meta property="article:tag" content="数据挖掘">
 <meta name="twitter:card" content="summary">
@@ -158,7 +158,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1306 个字)
+                    9 分钟 读完 (大约 1305 个字)
                 </span>
                 
                 
@@ -192,7 +192,7 @@ var _hmt = _hmt || [];
 <li>getRules()用来获取关联规则，如果当前是频繁2项集，就直接计算关联规则，否则通过挖掘规则的原理进行剪枝挖掘。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getRules</span><span class="params">(L,cnt,conf)</span>:</span></span><br><span class="line">    rules = []</span><br><span class="line">    <span class="keyword">for</span> itemList <span class="keyword">in</span> L:</span><br><span class="line">        itemSet = set(itemList)</span><br><span class="line">        H1 = [set([item]) <span class="keyword">for</span> item <span class="keyword">in</span> itemSet]</span><br><span class="line">        <span class="keyword">if</span>(len(itemSet)==<span class="number">2</span>):findRules(itemSet,H1,cnt,conf,rules)</span><br><span class="line">        <span class="keyword">else</span>:prunedRules(itemSet,H1,cnt,conf,rules)</span><br><span class="line">    <span class="keyword">return</span> rules</span><br></pre></td></tr></table></figure></li>
 <li>findRules()通过可信度计算出关联规则，同时将目前关联规则的右件保存用于剪枝<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findRules</span><span class="params">(itemSet,H,cnt,conf,rules)</span>:</span></span><br><span class="line">    prunedList = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> H:</span><br><span class="line">        curConf = <span class="number">1.0</span>*cnt[hash(str(sorted(list(itemSet))))]/cnt[hash(str(sorted(list(itemSet-item))))]</span><br><span class="line">        <span class="keyword">if</span>(curConf&gt;=conf):</span><br><span class="line">            rules.append((itemSet-item,item,curConf))</span><br><span class="line">            prunedList.append(item)</span><br><span class="line">    <span class="keyword">return</span> prunedList</span><br></pre></td></tr></table></figure></li>
 <li>prunedRules()函数通过不断的增大频繁项集的右件，使得右件由小到大的变化，从而获取该频繁项集下的所有符合要求的关联规则<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">prunedRules</span><span class="params">(itemSet,H,cnt,conf,rules)</span>:</span></span><br><span class="line">    k = len(H[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> len(itemSet) &gt; k:</span><br><span class="line">        nextH = findRules(itemSet,H,cnt,conf,rules)</span><br><span class="line">        <span class="keyword">if</span>(len(nextH)==<span class="number">0</span>): <span class="keyword">return</span></span><br><span class="line">        nextH = [set(item) <span class="keyword">for</span> item <span class="keyword">in</span> aprioriGen(nextH)]</span><br><span class="line">        <span class="keyword">if</span>(len(nextH)&gt;<span class="number">0</span>) : prunedRules(itemSet,nextH,cnt,conf,rules)</span><br></pre></td></tr></table></figure>
-生成的部分关联规则：<br><img src = "https://files.catbox.moe/2ojhy8.png"> </img><br>完整代码：<a href="https://github.com/Wenze7/DM/blob/master/associationRulesMine/apriori.py">click here</a></li>
+生成的部分关联规则：<br><img src = "https://files.catbox.moe/2ojhy8.png"> </img><h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><a href="https://github.com/Wenze7/DM/blob/master/associationRulesMine/apriori.py">click here</a></li>
 </ul>
 
         </div>
