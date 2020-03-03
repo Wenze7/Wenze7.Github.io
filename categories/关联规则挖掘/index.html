@@ -185,7 +185,39 @@ var _hmt = _hmt || [];
 <li>本文要介绍的是FP-growth算法，它被用于挖掘频繁项集，它把数据集存储为一个叫FP树的数据结构里，这样可以更高效地发现频繁项集或频繁项对。相比于Apriori对每个潜在的频繁项集都扫描数据集判定是否满足支持度，FP-growth算法只需要遍历两次数据库，因此它在大数据集上的速度显著优于Apriori。</li>
 <li><strong>FP</strong>即<strong>Frequent Pattern</strong>，FP树看上去就是一棵前缀树，根节点是空集，结点上是单个元素，保存了它在数据集中的出现次数，出现次数越多的元素越接近根。此外，结点之间通过链接（link）相连，只有相似元素会被连起来，连起来的元素又可以看成链表。同一个元素可以在FP树中多次出现，根据位置不同，对应着不同的频繁项集。可以为FP树设置最小支持度，过滤掉出现次数太少的元素。</li>
 </ul>
-<h4 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h4><p>假设现有数据集<br>| instance id | elements               |<br>| ———– | ———————- |<br>| 0           | r, z, h, j, p          |<br>| 1           | z, y, x, w, v, u, t, s |<br>| 2           | z                      |<br>| 3           | r, x, n, o, s          |<br>| 4           | y, r, x, z, q, t, p    |<br>| 5           | y, z, x, e, q, s, t, m |</p>
+<h4 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h4><p>假设现有数据集</p>
+<table>
+<thead>
+<tr>
+<th>instance id</th>
+<th>elements</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>r, z, h, j, p</td>
+</tr>
+<tr>
+<td>1</td>
+<td>z, y, x, w, v, u, t, s</td>
+</tr>
+<tr>
+<td>2</td>
+<td>z</td>
+</tr>
+<tr>
+<td>3</td>
+<td>r, x, n, o, s</td>
+</tr>
+<tr>
+<td>4</td>
+<td>y, r, x, z, q, t, p</td>
+</tr>
+<tr>
+<td>5</td>
+<td>y, z, x, e, q, s, t, m</td>
+</tr>
+</tbody></table>
 <ul>
 <li>首先求出频繁1项集，并且将他们在每条记录里按出现次数降序排序，并且把不满足支持度的删除，假设支持度为3，则处理之后的数据集为</li>
 </ul>
