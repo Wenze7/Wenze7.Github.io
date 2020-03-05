@@ -5,7 +5,8 @@ html {
   font-size: 14px;
 }
 body {
-  background-color: #f7f7f7;
+  background-color: rgba(10,10,10,0.02);
+  cursor: url("//cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@2.1.6/images/mouse.cur"), auto;
 }
 body,
 button,
