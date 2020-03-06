@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-06T08:29:49.015Z">
-<meta property="article:modified_time" content="2020-03-06T13:11:44.032Z">
+<meta property="article:modified_time" content="2020-03-06T13:15:09.503Z">
 <meta property="article:author" content="QiuPeng">
 <meta property="article:tag" content="神经网络">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@ var _hmt = _hmt || [];
 <p>$\displaystyle\frac{\partial E}{\partial O_5}=-(target_5-O_5)$</p>
 <p>$\displaystyle\frac{\partial O_5}{\partial I_5}=\displaystyle\frac{\partial \frac{1}{1+e^{-I_5}}}{\partial I_5}=O_5*(1-O_5)$</p>
 <p>$\displaystyle\frac{\partial I_5}{\partial   w_{35}}=\displaystyle\frac{\partial (w_{35}<em>O_3+w_{45}</em>O_4+\theta_5*1)}{\partial w_{35}}=O_3$</p>
-<p>$\therefore\displaystyle\frac{\partial E}{\partial w_{35}}=-O_5<em>(1-O_5)</em>(target_5-O_5)*O_3=-0.0625$</p>
+<p>$\therefore \displaystyle\frac{\partial E}{\partial w_{35}}=-O_5<em>(1-O_5)</em>(target_5-O_5)*O_3=-0.0625$</p>
 <p>$\displaystyle\frac{\partial E}{\partial \theta_5}=\displaystyle\frac{\partial I_5}{\partial   \theta_5}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial E}{\partial O_5}$</p>
 <p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial (w_{35}<em>O_3+w_{45}</em>O_4+\theta_5*1)}{\partial \theta_5}$</p>
 <p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}$</p>
