@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-03-06T08:29:49.015Z">
-<meta property="article:modified_time" content="2020-03-06T13:19:32.054Z">
+<meta property="article:modified_time" content="2020-03-06T13:21:06.629Z">
 <meta property="article:author" content="QiuPeng">
 <meta property="article:tag" content="神经网络">
 <meta name="twitter:card" content="summary">
@@ -216,19 +216,19 @@ var _hmt = _hmt || [];
 <hr>
 <h4 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h4><p>(1)  作出的图如下，显然不存在一条直线可以将样本实现正确的分类。<br><img src="https://files.catbox.moe/uaeybg.png"></img><br>(2) 如果激活函数换成线性函数，那么无论神经网络有多少层，输出都是输入的线性组合，与没有隐藏层的效果相当，就成了最原始的感知器了，与不使用激活函数、直接使用逻辑回归没有区别。<br>(3)<br><img src="https://files.catbox.moe/r65t1w.png"></img></p>
 <p>由题意知$w_{i,j}=0,\theta_i=0$<br>使用第一条数据进行计算,输入$x_1=0,x_2=0,y=0$</p>
-<h5 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h5><p>$I_3= x_1*w_{13}+x_2*w_{23}+\theta_3=$</p>
+<h5 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h5><p>$I_3= x_1*w_{13}+x_2*w_{23}+\theta_3=0*0+0*0+0=0$</p>
 <p>$O_3 = sigmoid(I_3) = 0.5$</p>
 <p>同理<br>$I_4 =0$<br>$O_4 = 0.5$<br>$I_5 =0$<br>$O_5 = 0.5$</p>
 <h5 id="反向传播计算误差对各参数的偏导数"><a href="#反向传播计算误差对各参数的偏导数" class="headerlink" title="反向传播计算误差对各参数的偏导数"></a>反向传播计算误差对各参数的偏导数</h5><p>$E=\frac{1}{2}*(target_5-O_5)^2$</p>
-<p>$\displaystyle\frac{\partial E}{\partial w_{35}}=\displaystyle\frac{\partial I_5}{\partial   w_{35}}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial E}{\partial O_5}$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{35}}=\displaystyle\frac{\partial I_5}{\partial   w_{35}}*\displaystyle\frac{\partial O_5}{\partial I_5}*\displaystyle\frac{\partial E}{\partial O_5}$</p>
 <p>$\displaystyle\frac{\partial E}{\partial O_5}=-(target_5-O_5)$</p>
 <p>$\displaystyle\frac{\partial O_5}{\partial I_5}=\displaystyle\frac{\partial \frac{1}{1+e^{-I_5}}}{\partial I_5}=O_5*(1-O_5)$</p>
-<p>$\displaystyle\frac{\partial I_5}{\partial   w_{35}}=\displaystyle\frac{\partial (w_{35}<em>O_3+w_{45}</em>O_4+\theta_5*1)}{\partial w_{35}}=O_3$</p>
-<p>$\therefore \displaystyle\frac{\partial E}{\partial w_{35}}=-O_5<em>(1-O_5)</em>(target_5-O_5)*O_3=-0.0625$</p>
-<p>$\displaystyle\frac{\partial E}{\partial \theta_5}=\displaystyle\frac{\partial I_5}{\partial   \theta_5}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial E}{\partial O_5}$</p>
-<p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial (w_{35}<em>O_3+w_{45}</em>O_4+\theta_5*1)}{\partial \theta_5}$</p>
+<p>$\displaystyle\frac{\partial I_5}{\partial   w_{35}}=\displaystyle\frac{\partial (w_{35}*O_3+w_{45}*O_4+\theta_5*1)}{\partial w_{35}}=O_3$</p>
+<p>$\therefore \displaystyle\frac{\partial E}{\partial w_{35}}=-O_5*(1-O_5)*(target_5-O_5)*O_3=-0.0625$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_5}=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}*\displaystyle\frac{\partial E}{\partial O_5}$</p>
+<p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}*\displaystyle\frac{\partial (w_{35}*O_3+w_{45}*O_4+\theta_5*1)}{\partial \theta_5}$</p>
 <p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}$</p>
-<p>$=\displaystyle\frac{\partial E}{\partial w_{35}}=-O_5<em>(1-O_5)</em>(target_5-O_5)=-0.125$</p>
+<p>$=\displaystyle\frac{\partial E}{\partial w_{35}}=-O_5*(1-O_5)*(target_5-O_5)=-0.125$</p>
 <p>同理</p>
 <p>$\displaystyle\frac{\partial E}{\partial w_{45}}=-0.0625$</p>
 <p>$\displaystyle\frac{\partial E}{\partial w_{13}}=0$</p>
