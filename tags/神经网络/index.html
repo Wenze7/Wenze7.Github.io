@@ -7,12 +7,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>分类: 关联规则挖掘 - Seven7777777&#39;blog</title>
+<title>标签: 神经网络 - Seven7777777&#39;blog</title>
 
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Seven7777777&#39;blog">
-<meta property="og:url" content="http://yoursite.com/categories/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/index.html">
 <meta property="og:site_name" content="Seven7777777&#39;blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
@@ -140,9 +140,8 @@ var _hmt = _hmt || [];
     <div class="card-content">
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">关联规则挖掘</a></li>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">神经网络</a></li>
         </ul>
         </nav>
     </div>
@@ -155,17 +154,17 @@ var _hmt = _hmt || [];
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-03T07:35:15.429Z">2020-03-03</time>
+                <time class="level-item has-text-grey" datetime="2020-03-06T08:29:49.015Z">2020-03-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98/">关联规则挖掘</a>
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1504 个字)
+                    6 分钟 读完 (大约 831 个字)
                 </span>
                 
                 
@@ -174,87 +173,75 @@ var _hmt = _hmt || [];
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-fpGrowth%E7%AE%97%E6%B3%95/">关联规则挖掘-fpGrowth算法</a>
+                <a class="has-link-black-ter" href="/2020/03/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%9A%E4%BA%8C/">神经网络作业二</a>
             
         </h1>
         <div class="content">
-            <h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><h4 id="什么是关联规则？"><a href="#什么是关联规则？" class="headerlink" title="什么是关联规则？"></a>什么是关联规则？</h4><p>见 <a href="http://seven7.xyz/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-apriori%E7%AE%97%E6%B3%95/">Apriori算法</a></p>
-<h4 id="几个重要概念"><a href="#几个重要概念" class="headerlink" title="几个重要概念"></a>几个重要概念</h4><p>见 <a href="http://seven7.xyz/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-apriori%E7%AE%97%E6%B3%95/">Apriori算法</a></p>
-<h4 id="fp-growth算法介绍"><a href="#fp-growth算法介绍" class="headerlink" title="fp-growth算法介绍"></a>fp-growth算法介绍</h4><ul>
-<li>打开你的搜索引擎，输入一个单词或一部分，例如“我”，搜索引擎可能会去统计和“我”一块出现得多的词，然后返回给你。其实就是去找频繁项集，而且需要相当地高效，像Apriori那样的速度肯定是不行的了。
+            <h4 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h4><p>考虑以下的二类训练样本集</p>
+<table>
+<thead>
+<tr>
+<th>Instance</th>
+<th>Feature vector</th>
+<th>Output label</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(0,0)</td>
+<td>+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(1,0)</td>
+<td>+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(0,1)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(-1,0)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>(1,-1)</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p>对此训练样本集，我们需要训练一个三层神经网络（输入层、单隐层、输出层），其中单隐层的单元（神经元）数目设为2，激活函数（activation function）为Sigmoid函数：</p>
+<p>（1）在二维坐标系中画出这5个训练样本点，并讨论此训练样本集是否线性可分。<br>（2）试分析将Sigmoid激活函数换成线性函数的缺陷。<br>（3）令初始化参数全部为0，试运用前馈（feedforward）算法计算在初始化参数下此三层神经网络的输出；然后运用反向传播（backpropagation）算法，计算代价函数对所有参数的偏导数，并讨论将初始化参数全部设为0所带来的问题。<br>（4）试给出一个神经网络（画出架构图，并写出激活函数及其对应的参数），使此训练样本集的5个训练样本点都可以被正确分类。</p>
+<hr>
+<h4 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h4><p>(1)  作出的图如下，显然不存在一条直线可以将样本实现正确的分类。<br><img src="https://files.catbox.moe/uaeybg.png"></img><br>(2) 如果激活函数换成线性函数，那么无论神经网络有多少层，输出都是输入的线性组合，与没有隐藏层的效果相当，就成了最原始的感知器了，与不使用激活函数、直接使用逻辑回归没有区别。<br>(3)<br><img src="https://files.catbox.moe/r65t1w.png"></img></p>
+<p>由题意知$w_{i,j}=0,\theta_i=0$<br>使用第一条数据进行计算,输入$x_1=0,x_2=0,y=0$</p>
+<h5 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a>正向传播</h5><p>$I_3 = x_1<em>w_{13}+x_2</em>w_{23}+\theta_3 = 0<em>0 + 0</em>0+0=0$</p>
+<p>$O_3 = sigmoid(I_3) = 0.5$</p>
+<p>同理<br>$I_4 =0$<br>$O_4 = 0.5$<br>$I_5 =0$<br>$O_5 = 0.5$</p>
+<h5 id="反向传播计算误差对各参数的偏导数"><a href="#反向传播计算误差对各参数的偏导数" class="headerlink" title="反向传播计算误差对各参数的偏导数"></a>反向传播计算误差对各参数的偏导数</h5><p>$E=\frac{1}{2}*(target_5-O_5)^2$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{35}}=\displaystyle\frac{\partial I_5}{\partial   w_{35}}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial E}{\partial O_5}$</p>
+<p>$\displaystyle\frac{\partial E}{\partial O_5}=-(target_5-O_5)$</p>
+<p>$\displaystyle\frac{\partial O_5}{\partial I_5}=\displaystyle\frac{\partial \frac{1}{1+e^{-I_5}}}{\partial I_5}=O_5*(1-O_5)$</p>
+<p>$\displaystyle\frac{\partial I_5}{\partial   w_{35}}=\displaystyle\frac{\partial (w_{35}<em>O_3+w_{45}</em>O_4+\theta_5*1)}{\partial w_{35}}=O_3$</p>
+<p>$\therefore\displaystyle\frac{\partial E}{\partial w_{35}}=-O_5<em>(1-O_5)</em>(target_5-O_5)*O_3=-0.0625$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_5}=\displaystyle\frac{\partial I_5}{\partial   \theta_5}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial E}{\partial O_5}$</p>
+<p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}<em>\displaystyle\frac{\partial O_5}{\partial I_5}</em>\displaystyle\frac{\partial (w_{35}<em>O_3+w_{45}</em>O_4+\theta_5*1)}{\partial \theta_5}$</p>
+<p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}$</p>
+<p>$=\displaystyle\frac{\partial E}{\partial w_{35}}=-O_5<em>(1-O_5)</em>(target_5-O_5)=-0.125$</p>
+<p>同理</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{45}}=-0.0625$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{13}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{14}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{23}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{24}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_4}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_3}=0$</p>
+<h5 id="初始化参数全部设为0所带来的问题"><a href="#初始化参数全部设为0所带来的问题" class="headerlink" title="初始化参数全部设为0所带来的问题"></a>初始化参数全部设为0所带来的问题</h5><p>如果我们令所有的初始参数都为0，这将意味着我们第二层的所有激活单元都会有相同的值，那么隐藏神经元对输出单元的影响也是相同的，通过反向传播梯度下降法进行计算时，会得到同样的梯度大小，所以无论设置多少个隐藏单元，其最终的影响都是相同的。同理，也不能初始化所有的参数都为同一个非0的数。因此，要随机化初始参数，以打破对称性。</p>
+
         </div>
         
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-fpGrowth%E7%AE%97%E6%B3%95/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-03T07:34:45.537Z">2020-03-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98/">关联规则挖掘</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    9 分钟 读完 (大约 1305 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-apriori%E7%AE%97%E6%B3%95/">关联规则挖掘-apriori算法</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><h4 id="什么是关联规则？"><a href="#什么是关联规则？" class="headerlink" title="什么是关联规则？"></a>什么是关联规则？</h4><p>关联规则分析也称为购物篮分析，最早是为了发现超市销售数据库中不同的商品之间的关联关系。关联规则是反映一个事物与其他事物之间的关联性，若多个事物之间存在着某种关联关系，那么其中的一个事物就能通过其他事物预测到。<br>举个例子：在超市中，经常发现啤酒和尿布经常在同一张购物清单上出现，那是因为买尿裤的一般是有孩子的中年男性，他们在超市给孩子买尿裤时，会买上几瓶啤酒来犒劳自己，于是啤酒和尿布就相互关联。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-apriori%E7%AE%97%E6%B3%95/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
         
         
     </div>
@@ -322,7 +309,7 @@ var _hmt = _hmt || [];
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            8
+                            9
                         </p>
                     </a>
                 </div>
@@ -334,7 +321,7 @@ var _hmt = _hmt || [];
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            6
+                            4
                         </p>
                     </a>
                 </div>
@@ -346,7 +333,7 @@ var _hmt = _hmt || [];
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            6
+                            7
                         </p>
                     </a>
                 </div>
@@ -449,22 +436,6 @@ var _hmt = _hmt || [];
             </h3>
             <ul class="menu-list">
             <li>
-        <a class="level is-marginless" href="/categories/%E4%BD%9C%E4%B8%9A/">
-            <span class="level-start">
-                <span class="level-item">作业</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98/">
-            <span class="level-start">
-                <span class="level-item">关联规则挖掘</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
         <a class="level is-marginless" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
             <span class="level-start">
                 <span class="level-item">学习笔记</span>
@@ -486,7 +457,7 @@ var _hmt = _hmt || [];
                 <span class="level-item">数据挖掘</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">5</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/%E8%B5%84%E6%BA%90%E6%80%BB%E7%BB%93/">
@@ -507,7 +478,7 @@ var _hmt = _hmt || [];
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/MacOS%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/" style="font-size: 10px;">MacOS终端美化</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/%E4%B8%8D%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0/" style="font-size: 10px;">不定时更新</a> <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="font-size: 10px;">决策树</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" style="font-size: 20px;">数据挖掘</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a>
+        <a href="/tags/MacOS%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/" style="font-size: 10px;">MacOS终端美化</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/%E4%B8%8D%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0/" style="font-size: 10px;">不定时更新</a> <a href="/tags/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98/" style="font-size: 20px;">关联规则挖掘</a> <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="font-size: 20px;">决策树</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">神经网络</a>
     </div>
 </div>
     
@@ -525,7 +496,7 @@ var _hmt = _hmt || [];
                     <span class="level-item">三月 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">2</span>
+                    <span class="level-item tag">3</span>
                 </span>
             </a>
         </li>
