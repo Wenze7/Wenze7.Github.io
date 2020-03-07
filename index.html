@@ -252,7 +252,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 449 个字)
+                    3 分钟 读完 (大约 450 个字)
                 </span>
                 
                 
@@ -266,191 +266,16 @@ var _hmt = _hmt || [];
         </h1>
         <div class="content">
             <h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img src="https://files.catbox.moe/2xsf5y.jpg"></img></p>
-<h4 id="将数据映射到-0-1"><a href="#将数据映射到-0-1" class="headerlink" title="将数据映射到[0-1]"></a>将数据映射到[0-1]</h4><ul>
-<li>department</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>映射前</th>
-<th>映射后</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>sales</td>
-<td>0</td>
-</tr>
-<tr>
-<td>systems</td>
-<td>0.33</td>
-</tr>
-<tr>
-<td>marketing</td>
-<td>0.67</td>
-</tr>
-<tr>
-<td>secretary</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<ul>
-<li>status</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>映射前</th>
-<th>映射后</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>senior</td>
-<td>0</td>
-</tr>
-<tr>
-<td>junior</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<ul>
-<li>age</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>映射前</th>
-<th>映射后</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>21···25</td>
-<td>0</td>
-</tr>
-<tr>
-<td>26···30</td>
-<td>0.25</td>
-</tr>
-<tr>
-<td>31···35</td>
-<td>0.5</td>
-</tr>
-<tr>
-<td>36···40</td>
-<td>0.75</td>
-</tr>
-<tr>
-<td>41···45</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<ul>
-<li>salary</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>映射前</th>
-<th>映射后</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>26K···30K</td>
-<td>0</td>
-</tr>
-<tr>
-<td>31K···35K</td>
-<td>0.125</td>
-</tr>
-<tr>
-<td>36K···40K</td>
-<td>0.250</td>
-</tr>
-<tr>
-<td>41K···45K</td>
-<td>0.375</td>
-</tr>
-<tr>
-<td>46K···50K</td>
-<td>0.500</td>
-</tr>
-<tr>
-<td>51K···55K</td>
-<td>0.625</td>
-</tr>
-<tr>
-<td>56K···60K</td>
-<td>0.750</td>
-</tr>
-<tr>
-<td>61K···65K</td>
-<td>0.875</td>
-</tr>
-<tr>
-<td>66K···70K</td>
-<td>1</td>
-</tr>
-</tbody></table>
-<h4 id="构建前馈神经网络"><a href="#构建前馈神经网络" class="headerlink" title="构建前馈神经网络"></a>构建前馈神经网络</h4><p><img src="https://files.catbox.moe/pwcxre.png"></img></p>
-<p>$w_{14} = 0.07000$  $w_{15} = 0.23000$  $w_{16} = 0.30000$  $w_{17} = 0.44000$<br>$w_{24} = 0.23000$  $w_{25} = 0.40000$  $w_{26} = 0.42000$  $w_{27} = 0.37000$<br>$w_{34} = 0.27000$  $w_{35} = 0.40000$  $w_{36} = 0.03000$  $w_{37} = 0.09000$<br>$w_{48} = -0.10000$  $w_{58} = -0.49000$  $w_{68} = 0.16000$  $w_{78} = 0.47000$</p>
-<p>$\theta_4 = 0.12$ $\theta_5 = -0.1$ $\theta_6 = 0.29$ $\theta_7 = -0.29$ $\theta_8 = 0.17$</p>
-<p>测试数据为 (sales,senior,31···35,46K···50K)<br>映射之后为(0,0,0.5,0.5)<br>其中输入为(0,0.5,0.5)<br>输出为0</p>
-<h4 id="计算各个节点的输出"><a href="#计算各个节点的输出" class="headerlink" title="计算各个节点的输出"></a>计算各个节点的输出</h4><p>$I_4 =  w_{14}*x_1+w_{24}*x_2+w_{34}*x_3 +     heta_4 = 0.370$<br>$O_4 = \displaystyle\frac{1}{1+e^-{I_4}}=0.591$</p>
-<p>$I_5 =  w_{15}*x_1+w_{25}*x_2+w_{35}*x_3 +     heta_5 = 0.300$<br>$O_5 = \displaystyle\frac{1}{1+e^-{I_5}}=0.574$</p>
-<p>$I_6 =  w_{16}*x_1+w_{26}*x_2+w_{36}*x_3 +     heta_6 = 0.515$<br>$O_6 = \displaystyle\frac{1}{1+e^-{I_6}}=0.626$</p>
-<p>$I_7 =  w_{17}*x_1+w_{27}*x_2+w_{37}*x_3 +     heta_7 = -0.060$<br>$O_7 = \displaystyle\frac{1}{1+e^-{I_7}}=0.485$</p>
-<p>$I_7 = w_{48}*O_4+w_58*O_5+w_{68}*O_6 + w_{78}*O_7 + \theta_8 = 0.398$<br>$O_8 = \displaystyle\frac{1}{1+e^-I_8}=0.598$</p>
-<h4 id="计算误差"><a href="#计算误差" class="headerlink" title="计算误差"></a>计算误差</h4><p>$Err_8 = O_8(1-O_8)(T_8-O_8)=-0.144$</p>
-<p>$Err_7 = O_7(1-O_7)(\sum_kErr_kw_{jk})=O_7(1-O_7)(Err_8)(W_{78})=-0.017$</p>
-<p>$Err_6 = O_6(1-O_6)(\sum_kErr_kw_{jk})=O_6(1-O_6)(Err_8)(W_{68})=-0.005$</p>
-<p>$Err_5 = O_5(1-O_5)(\sum_kErr_kw_{jk})=O_5(1-O_5)(Err_8)(W_{58})=0.017$</p>
-<p>$Err_4 = O_4(1-O_4)(\sum_kErr_kw_{jk})=O_4(1-O_4)(Err_8)(W_{48})=0.003$</p>
-<h4 id="更新权值和偏置值"><a href="#更新权值和偏置值" class="headerlink" title="更新权值和偏置值"></a>更新权值和偏置值</h4><ul>
-<li>权值</li>
-</ul>
-<p>$w_{14} = w_{14}+(l)*Err_4*O_1=0.070$</p>
-<p>$w_{15} = w_{15}+(l)*Err_5*O_1=0.230$</p>
-<p>$w_{16} = w_{16}+(l)*Err_6*O_1=0.300$</p>
-<p>$w_{17} = w_{17}+(l)*Err_7*O_1=0.440$</p>
-<p>$w_{24} = w_{24}+(l)*Err_4*O_2=0.232$</p>
-<p>$w_{25} = w_{25}+(l)*Err_5*O_2=0.408$</p>
-<p>$w_{26} = w_{26}+(l)*Err_6*O_2=0.418$</p>
-<p>$w_{27} = w_{27}+(l)*Err_7*O_2=0.362$</p>
-<p>$w_{34} = w_{34}+(l)*Err_4*O_3=0.272$</p>
-<p>$w_{35} = w_{35}+(l)*Err_5*O_3=0.408$</p>
-<p>$w_{36} = w_{36}+(l)*Err_6*O_3=0.028$</p>
-<p>$w_{37} = w_{37}+(l)*Err_7*O_3=0.082$</p>
-<p>$w_{48} = w_{48}+(l)*Err_8*O_4=-0.177$</p>
-<p>$w_{58} = w_{58}+(l)*Err_8*O_5=-0.564$</p>
-<p>$w_{68} = w_{68}+(l)*Err_8*O_6=0.079$</p>
-<p>$w_{78} = w_{78}+(l)*Err_8*O_7=0.407$</p>
-<p>$w_{48} = w_{48}+(l)*Err_8*O_4=-0.177$</p>
-<p>$w_{58} = w_{58}+(l)*Err_8*O_5=-0.564$</p>
-<p>$w_{68} = w_{68}+(l)*Err_8*O_6=0.079$</p>
-<p>$w_{78} = w_{78}+(l)*Err_8*O_7=0.407$</p>
-<p>$w_{48} = w_{48}+(l)*Err_8*O_4=-0.177$</p>
-<p>$w_{58} = w_{58}+(l)*Err_8*O_5=-0.564$</p>
-<p>$w_{68} = w_{68}+(l)*Err_8*O_6=0.079$</p>
-<p>$w_{78} = w_{78}+(l)*Err_8*O_7=0.407$</p>
-<p>$w_{48} = w_{48}+(l)*Err_8*O_4=-0.177$</p>
-<p>$w_{58} = w_{58}+(l)*Err_8*O_5=-0.564$</p>
-<p>$w_{68} = w_{68}+(l)*Err_8*O_6=0.079$</p>
-<p>$w_{78} = w_{78}+(l)*Err_8*O_7=0.407$</p>
-<p>$w_{48} = w_{48}+(l)*Err_8*O_4=-0.177$</p>
-<p>$w_{58} = w_{58}+(l)*Err_8*O_5=-0.564$</p>
-<p>$w_{68} = w_{68}+(l)*Err_8*O_6=0.079$</p>
-<p>$w_{78} = w_{78}+(l)*Err_8*O_7=0.407$</p>
-<ul>
-<li>偏置值</li>
-</ul>
-<p>$\theta_4 = \theta_4+(l)*Err_4=0.123$</p>
-<p>$\theta_5 = \theta_5+(l)*Err_5=-0.084$</p>
-<p>$\theta_6 = \theta_6+(l)*Err_6=0.285$</p>
-<p>$\theta_7 = \theta_7+(l)*Err_7=-0.305$</p>
-<p>$\theta_8 = \theta_8+(l)*Err_8=0.041$</p>
-<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h4><p><a href="https://github.com/Wenze7/DM/blob/master/associationRulesMine/BPNN.py">click here</a></p>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/03/05/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%9A%E4%B8%80/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
