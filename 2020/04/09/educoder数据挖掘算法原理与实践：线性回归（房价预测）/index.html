@@ -10,16 +10,16 @@
 <title>educoder数据挖掘算法原理与实践：线性回归（房价预测） - Seven7777777&#39;blog</title>
 
 
-    <meta name="description" content="任务描述波士顿房价数据集共有506条波斯顿房价的数据，每条数据包括对指定房屋的13项数值型特征和目标房价组成。我们需要通过数据特征来对目标房价进行预测。数据集中部分数据与标签如下图所示:  1234567&#96;&#96;&#96;pyfrom sklearn import datasets#加载波斯顿房价数据集boston &#x3D; datasets.load_boston()#X表示特征">
+    <meta name="description" content="任务描述波士顿房价数据集共有506条波斯顿房价的数据，每条数据包括对指定房屋的13项数值型特征和目标房价组成。我们需要通过数据特征来对目标房价进行预测。数据集中部分数据与标签如下图所示:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="educoder数据挖掘算法原理与实践：线性回归（房价预测）">
 <meta property="og:url" content="http://yoursite.com/2020/04/09/educoder%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%88%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%EF%BC%89/index.html">
 <meta property="og:site_name" content="Seven7777777&#39;blog">
-<meta property="og:description" content="任务描述波士顿房价数据集共有506条波斯顿房价的数据，每条数据包括对指定房屋的13项数值型特征和目标房价组成。我们需要通过数据特征来对目标房价进行预测。数据集中部分数据与标签如下图所示:  1234567&#96;&#96;&#96;pyfrom sklearn import datasets#加载波斯顿房价数据集boston &#x3D; datasets.load_boston()#X表示特征">
+<meta property="og:description" content="任务描述波士顿房价数据集共有506条波斯顿房价的数据，每条数据包括对指定房屋的13项数值型特征和目标房价组成。我们需要通过数据特征来对目标房价进行预测。数据集中部分数据与标签如下图所示:">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-09T09:18:24.110Z">
-<meta property="article:modified_time" content="2020-04-09T09:54:31.123Z">
+<meta property="article:modified_time" content="2020-04-09T09:55:19.276Z">
 <meta property="article:author" content="QiuPeng">
 <meta property="article:tag" content="多元线性回归">
 <meta property="article:tag" content="educoder">
@@ -163,7 +163,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1302 个字)
+                    9 分钟 读完 (大约 1303 个字)
                 </span>
                 
                 
@@ -177,6 +177,8 @@ var _hmt = _hmt || [];
         </h1>
         <div class="content">
             <h3 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h3><p>波士顿房价数据集共有506条波斯顿房价的数据，每条数据包括对指定房屋的13项数值型特征和目标房价组成。我们需要通过数据特征来对目标房价进行预测。<br>数据集中部分数据与标签如下图所示:</p>
+<a id="more"></a>
+
 <p><img src="https://www.educoder.net/api/attachments/293667"></img><br><img src="https://www.educoder.net/api/attachments/293668"></img></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#96;&#96;&#96;py</span><br><span class="line">from sklearn import datasets</span><br><span class="line">#加载波斯顿房价数据集</span><br><span class="line">boston &#x3D; datasets.load_boston()</span><br><span class="line">#X表示特征，y表示目标房价</span><br><span class="line">x &#x3D; boston.data</span><br><span class="line">y &#x3D; boston.target</span><br></pre></td></tr></table></figure>
 <p>然后再对数据集进行划分：</p>
