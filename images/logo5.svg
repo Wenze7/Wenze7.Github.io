@@ -1,0 +1,36 @@
+<svg id="组_2" data-name="组 2" xmlns="http://www.w3.org/2000/svg" width="716" height="128" viewBox="0 0 716 128">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 70.543px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #336fd3;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        font-family: FZZYJW--GB1-0, FZZYJW;
+      }
+
+      .cls-2 {
+        font-size: 34.648px;
+      }
+
+      .cls-3 {
+        font-size: 28.027px;
+        fill: #6f6f6f;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #336fd3;
+        stroke-width: 4px;
+      }
+    </style>
+  </defs>
+  <text id="CODING" class="cls-1" transform="translate(20.721 101.865) scale(1.509 1.499)">CODING</text>
+  <text id="MY_YOUTH" data-name="MY YOUTH" class="cls-2" transform="translate(455.725 59.944) scale(1.237 1.229)">MY YOUTH</text>
+  <text id="编码青春" class="cls-3" transform="translate(459.036 99.663) scale(1.237 1.229)">编码青春</text>
+  <rect id="矩形_2" data-name="矩形 2" class="cls-4" x="4" y="3" width="710" height="124"/>
+</svg>
