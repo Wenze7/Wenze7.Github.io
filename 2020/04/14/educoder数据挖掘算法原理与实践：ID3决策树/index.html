@@ -19,10 +19,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-04-14T09:12:03.756Z">
-<meta property="article:modified_time" content="2020-04-14T09:46:54.592Z">
+<meta property="article:modified_time" content="2020-04-14T09:47:36.880Z">
 <meta property="article:author" content="QiuPeng">
-<meta property="article:tag" content="ID">
 <meta property="article:tag" content="决策树">
+<meta property="article:tag" content="ID">
 <meta property="article:tag" content="educoder">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
@@ -198,7 +198,7 @@ var _hmt = _hmt || [];
 <p>所以信息增益如果套上机器学习的话就是，如果把特征A对训练集D的信息增益记为g(D, A)的话，那么g(D, A)的计算公式就是：</p>
 <p>$$g(D, A)=H(D)-H(D,A)g(D,A)=H(D)−H(D,A)$$</p>
 <p>为了更好的解释熵，条件熵，信息增益的计算过程，下面通过示例来描述。假设我现在有这一个数据集，第一列是编号，第二列是性别，第三列是活跃度，第四列是客户是否流失的标签（0:表示未流失，1:表示流失）。<br><img src="https://s1.ax1x.com/2020/04/14/JS3ozF.jpg" alt="JS3ozF.jpg"><br>假如要算性别和活跃度这两个特征的信息增益的话，首先要先算总的熵和条件熵。总的熵其实非常好算，就是把标签作为随机变量X。上表中标签只有两种（0和1）因此随机变量X的取值只有0或者1。所以要计算熵就需要先分别计算标签为0的概率和标签为1的概率。从表中能看出标签为0的数据有10条，所以标签为0的概率等于2/3。标签为1的概率为1/3。所以熵为：</p>
-<p>$$-(1/3)*log(1/3)-(2/3)*log(2/3)=0.9182−(1/3)\∗log(1/3)−(2/3)\∗log(2/3)=0.9182$$</p>
+<p>$$-(1/3)*log(1/3)-(2/3)*log(2/3)=0.9182−(1/3)∗log(1/3)−(2/3)∗log(2/3)=0.9182$$</p>
 <p>接下来就是条件熵的计算，以性别为男的熵为例。表格中性别为男的数据有8条，这8条数据中有3条数据的标签为1，有5条数据的标签为0。所以根据条件熵的计算公式能够得出该条件熵为：</p>
 <p>$$-(3/8)*log(3/8)-(5/8)*log(5/8)=0.9543−(3/8)∗log(3/8)−(5/8)∗log(5/8)=0.9543$$</p>
 <p>根据上述的计算方法可知，总熵为：</p>
