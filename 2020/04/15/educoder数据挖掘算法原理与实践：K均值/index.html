@@ -7,16 +7,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>标签: 多元线性回归 - Seven7777777&#39;blog</title>
+<title>educoder数据挖掘算法原理与实践：K均值 - Seven7777777&#39;blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Seven7777777&#39;blog">
-<meta property="og:url" content="http://yoursite.com/tags/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/index.html">
+    <meta name="description" content="什么是质心K-means算法是一个基于距离的聚类方法，距离指的是每个样本到质心的距离。那么，这里所说的质心是什么呢？ 其实，质心指的是样本每个特征的均值所构成的一个坐标。举个例子：假如有两个数据(1,1)和(2,2)则这两个样本的质心为(1.5,1.5)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="educoder数据挖掘算法原理与实践：K均值">
+<meta property="og:url" content="http://yoursite.com/2020/04/15/educoder%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9AK%E5%9D%87%E5%80%BC/index.html">
 <meta property="og:site_name" content="Seven7777777&#39;blog">
+<meta property="og:description" content="什么是质心K-means算法是一个基于距离的聚类方法，距离指的是每个样本到质心的距离。那么，这里所说的质心是什么呢？ 其实，质心指的是样本每个特征的均值所构成的一个坐标。举个例子：假如有两个数据(1,1)和(2,2)则这两个样本的质心为(1.5,1.5)。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-04-15T13:05:20.161Z">
+<meta property="article:modified_time" content="2020-04-15T13:15:07.176Z">
 <meta property="article:author" content="QiuPeng">
+<meta property="article:tag" content="educoder">
+<meta property="article:tag" content="K-means">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -87,7 +93,7 @@ var _hmt = _hmt || [];
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo5.svg" alt="Seven7777777&#39;blog" height="28">
+                <img src="/images/logo5.svg" alt="educoder数据挖掘算法原理与实践：K均值" height="28">
             
             </a>
         </div>
@@ -123,6 +129,10 @@ var _hmt = _hmt || [];
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -136,25 +146,14 @@ var _hmt = _hmt || [];
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">多元线性回归</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-04-09T09:18:24.110Z">2020-04-09</time>
+                <time class="level-item has-text-grey" datetime="2020-04-15T13:05:20.161Z">2020-04-15</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
@@ -164,7 +163,7 @@ var _hmt = _hmt || [];
                 <span class="level-item has-text-grey">
                     
                     
-                    9 分钟 读完 (大约 1303 个字)
+                    6 分钟 读完 (大约 881 个字)
                 </span>
                 
                 
@@ -173,22 +172,87 @@ var _hmt = _hmt || [];
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2020/04/09/educoder%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%88%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%EF%BC%89/">educoder数据挖掘算法原理与实践：线性回归（房价预测）</a>
+                educoder数据挖掘算法原理与实践：K均值
             
         </h1>
         <div class="content">
-            <h3 id="任务描述"><a href="#任务描述" class="headerlink" title="任务描述"></a>任务描述</h3><p>波士顿房价数据集共有506条波斯顿房价的数据，每条数据包括对指定房屋的13项数值型特征和目标房价组成。我们需要通过数据特征来对目标房价进行预测。<br>数据集中部分数据与标签如下图所示:</p>
+            <h3 id="什么是质心"><a href="#什么是质心" class="headerlink" title="什么是质心"></a><strong>什么是质心</strong></h3><p>K-means算法是一个基于距离的聚类方法，距离指的是每个样本到质心的距离。那么，这里所说的质心是什么呢？</p>
+<p>其实，质心指的是样本每个特征的均值所构成的一个坐标。举个例子：假如有两个数据(1,1)和(2,2)则这两个样本的质心为(1.5,1.5)。</p>
+<a id="more"></a>
+<p>同样的，如果一份数据有m个样本，每个样本有n个特征，用$x_i^j$来表示第j个样本的第i个特征，则它们的质心为：<br> $$Cmass=(\frac{\sum_{j=1}^mx_1^j}{m},\frac{\sum_{j=1}^mx_2^j}{m},…,\frac{\sum_{j=1}^mx_n^j}{m})$$</p>
+<h3 id="k-means算法原理"><a href="#k-means算法原理" class="headerlink" title="k-means算法原理"></a><strong>k-means算法原理</strong></h3><p>K-means算法是基于数据划分的无监督聚类算法，首先定义常数k，常数k表示的是最终的聚类的类别数，在确定了类别数k后，随机初始化k个类别的聚类中心(质心)，通过计算每一个样本与聚类中心（质心）的距离，将样本点划分到距离最近的类别中。</p>
+<h3 id="k-means算法流程"><a href="#k-means算法流程" class="headerlink" title="k-means算法流程"></a><strong>k-means算法流程</strong></h3><p>k-means算法流程如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">随机初始k个点，作为类别中心。</span><br><span class="line">对每个样本将其标记为距离类别中心最近的类别。</span><br><span class="line">将每个类别的质心更新为新的类别中心。</span><br><span class="line">重复步骤<span class="number">2</span>、<span class="number">3</span>，直到类别中心的变化小于阈值。</span><br></pre></td></tr></table></figure>
+<p>过程如下图<br><img src="https://static.leiphone.com/uploads/new/sns/article/201901/1546583595586245.gif"></img></p>
+<h3 id="如何确定k的值"><a href="#如何确定k的值" class="headerlink" title="如何确定k的值"></a><strong>如何确定k的值</strong></h3><p>在K-means算法中，K值作为一个超参数，它的值需要我们自己来确定，通常k默认5。当然我们也可以写一个循环，将k等于各个值的结果输出，选择最好的结果的k值。部分代码如下：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">    km = KMmeans(i)</span><br></pre></td></tr></table></figure>
+<h3 id="第一关代码"><a href="#第一关代码" class="headerlink" title="第一关代码"></a><strong>第一关代码</strong></h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算样本间距离</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">distance</span><span class="params">(x, y, p=<span class="number">2</span>)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    input:x(ndarray):第一个样本的坐标</span></span><br><span class="line"><span class="string">          y(ndarray):第二个样本的坐标</span></span><br><span class="line"><span class="string">          p(int):等于1时为曼哈顿距离，等于2时为欧氏距离</span></span><br><span class="line"><span class="string">    output:distance(float):x到y的距离</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#********* Begin *********#</span></span><br><span class="line">    <span class="keyword">if</span> p == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> np.sum(np.abs(x-y))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> np.sum((x-y)**<span class="number">2</span>)**<span class="number">0.5</span></span><br><span class="line">    <span class="comment">#********* End *********#</span></span><br><span class="line"><span class="comment">#计算质心</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal_Cmass</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    input:data(ndarray):数据样本</span></span><br><span class="line"><span class="string">    output:mass(ndarray):数据样本质心</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#********* Begin *********#</span></span><br><span class="line">    Cmass = np.mean(data,axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment">#********* End *********#</span></span><br><span class="line">    <span class="keyword">return</span> Cmass</span><br><span class="line"><span class="comment">#计算每个样本到质心的距离，并按照从小到大的顺序排列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sorted_list</span><span class="params">(data,Cmass)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    input:data(ndarray):数据样本</span></span><br><span class="line"><span class="string">          Cmass(ndarray):数据样本质心</span></span><br><span class="line"><span class="string">    output:dis_list(list):排好序的样本到质心距离</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#********* Begin *********#</span></span><br><span class="line">    dis_list = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">        dis_list.append(distance(item,Cmass))</span><br><span class="line">    dis_list.sort()</span><br><span class="line">    <span class="comment">#********* End *********#</span></span><br><span class="line">    <span class="keyword">return</span> dis_list</span><br></pre></td></tr></table></figure>
+<h3 id="第二关代码"><a href="#第二关代码" class="headerlink" title="第二关代码"></a><strong>第二关代码</strong></h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算样本间距离</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">distance</span><span class="params">(x, y, p=<span class="number">2</span>)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    input:x(ndarray):第一个样本的坐标</span></span><br><span class="line"><span class="string">          y(ndarray):第二个样本的坐标</span></span><br><span class="line"><span class="string">          p(int):等于1时为曼哈顿距离，等于2时为欧氏距离</span></span><br><span class="line"><span class="string">    output:distance(float):x到y的距离</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#********* Begin *********#</span></span><br><span class="line">    <span class="keyword">if</span> p == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> np.sum(np.abs(x-y))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> np.sum((x-y)**<span class="number">2</span>)**<span class="number">0.5</span></span><br><span class="line">    <span class="comment">#********* End *********#</span></span><br><span class="line"><span class="comment">#计算质心</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal_Cmass</span><span class="params">(data)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    input:data(ndarray):数据样本</span></span><br><span class="line"><span class="string">    output:mass(ndarray):数据样本质心</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#********* Begin *********#</span></span><br><span class="line">    Cmass = np.mean(data,axis=<span class="number">0</span>)</span><br><span class="line">    <span class="comment">#********* End *********#</span></span><br><span class="line">    <span class="keyword">return</span> Cmass</span><br><span class="line"><span class="comment">#计算每个样本到质心的距离，并按照从小到大的顺序排列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sorted_list</span><span class="params">(data,Cmass)</span>:</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    input:data(ndarray):数据样本</span></span><br><span class="line"><span class="string">          Cmass(ndarray):数据样本质心</span></span><br><span class="line"><span class="string">    output:dis_list(list):排好序的样本到质心距离</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    <span class="comment">#********* Begin *********#</span></span><br><span class="line">    dis_list = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> data:</span><br><span class="line">        dis_list.append(distance(item,Cmass))</span><br><span class="line">    dis_list.sort()</span><br><span class="line">    <span class="comment">#********* End *********#</span></span><br><span class="line">    <span class="keyword">return</span> dis_list</span><br></pre></td></tr></table></figure>
+
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/04/09/educoder%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%EF%BC%88%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%EF%BC%89/#more">阅读更多</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/K-means/" rel="tag">K-means</a>, <a class="has-link-grey -link" href="/tags/educoder/" rel="tag">educoder</a>
                 </div>
             </div>
         </div>
         
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zfb.JPG" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.JPG" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/04/15/educoder%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9Ak%E8%BF%91%E9%82%BB/">
+                <span class="level-item">educoder数据挖掘算法原理与实践：k近邻</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
@@ -197,10 +261,26 @@ var _hmt = _hmt || [];
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'O0P4snqgLnmubqnDqIS8jbqj-gzGzoHsz',
+        app_key: 'MYxx6TUU4WMljOulxHav5K3s',
+        placeholder: '如有不当之处，敬请指正！'
+    });
+</script>
 
-
-
-
+    </div>
+</div>
 
 
 
@@ -208,8 +288,6 @@ var _hmt = _hmt || [];
 
 
     
-
-
 </div>
                 
 
@@ -336,6 +414,42 @@ var _hmt = _hmt || [];
 </div>
     
         
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是质心">
+        <span class="has-mr-6">1</span>
+        <span>什么是质心</span>
+        </a></li><li>
+        <a class="is-flex" href="#k-means算法原理">
+        <span class="has-mr-6">2</span>
+        <span>k-means算法原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#k-means算法流程">
+        <span class="has-mr-6">3</span>
+        <span>k-means算法流程</span>
+        </a></li><li>
+        <a class="is-flex" href="#如何确定k的值">
+        <span class="has-mr-6">4</span>
+        <span>如何确定k的值</span>
+        </a></li><li>
+        <a class="is-flex" href="#第一关代码">
+        <span class="has-mr-6">5</span>
+        <span>第一关代码</span>
+        </a></li><li>
+        <a class="is-flex" href="#第二关代码">
+        <span class="has-mr-6">6</span>
+        <span>第二关代码</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
     
         <div class="card widget">
     <div class="card-content">
@@ -493,7 +607,7 @@ var _hmt = _hmt || [];
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo5.svg" alt="Seven7777777&#39;blog" height="28">
+                    <img src="/images/logo5.svg" alt="educoder数据挖掘算法原理与实践：K均值" height="28">
                 
                 </a>
                 <p class="is-size-7">
