@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2020-05-20T15:48:27.875Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/04/15/educoder%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5%EF%BC%9AK%E5%9D%87%E5%80%BC/</loc>
     
     <lastmod>2020-04-17T06:52:54.265Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://yoursite.com/2020/02/20/MacOS%E7%BB%88%E7%AB%AF%E7%BE%8E%E5%8C%96/</loc>
     
     <lastmod>2020-03-21T07:30:25.985Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2020-03-08T05:10:27.313Z</lastmod>
     
   </url>
   
