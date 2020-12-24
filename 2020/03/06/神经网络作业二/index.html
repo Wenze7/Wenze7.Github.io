@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>神经网络作业二 - Seven7777777&#39;blog</title>
+
+
+    <meta name="description" content="题意考虑以下的二类训练样本集    Instance Feature vector Output label    1 (0,0) +   2 (1,0) +   3 (0,1) -   4 (-1,0) -   5 (1,-1) -   对此训练样本集，我们需要训练一个三层神经网络（输入层、单隐层、输出层），其中单隐层的单元（神经元）数目设为2，激活函数（activation function）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络作业二">
+<meta property="og:url" content="http://yoursite.com/2020/03/06/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%9A%E4%BA%8C/index.html">
+<meta property="og:site_name" content="Seven7777777&#39;blog">
+<meta property="og:description" content="题意考虑以下的二类训练样本集    Instance Feature vector Output label    1 (0,0) +   2 (1,0) +   3 (0,1) -   4 (-1,0) -   5 (1,-1) -   对此训练样本集，我们需要训练一个三层神经网络（输入层、单隐层、输出层），其中单隐层的单元（神经元）数目设为2，激活函数（activation function）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
+<meta property="article:published_time" content="2020-03-06T08:29:49.015Z">
+<meta property="article:modified_time" content="2020-03-07T10:09:24.279Z">
+<meta property="article:author" content="seven7777777">
+<meta property="article:tag" content="神经网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.jpeg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9f2147f89cfdfc1c96777c46d87fed3a";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="神经网络作业二" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Wenze7">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-06T08:29:49.015Z">2020-03-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 886 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                神经网络作业二
+            
+        </h1>
+        <div class="content">
+            <h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a><strong>题意</strong></h3><p>考虑以下的二类训练样本集</p>
+<table>
+<thead>
+<tr>
+<th>Instance</th>
+<th>Feature vector</th>
+<th>Output label</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>(0,0)</td>
+<td>+</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(1,0)</td>
+<td>+</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(0,1)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(-1,0)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>5</td>
+<td>(1,-1)</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p>对此训练样本集，我们需要训练一个三层神经网络（输入层、单隐层、输出层），其中单隐层的单元（神经元）数目设为2，激活函数（activation function）为Sigmoid函数：</p>
+<a id="more"></a>
+<p>（1）在二维坐标系中画出这5个训练样本点，并讨论此训练样本集是否线性可分。<br>（2）试分析将Sigmoid激活函数换成线性函数的缺陷。<br>（3）令初始化参数全部为0，试运用前馈（feedforward）算法计算在初始化参数下此三层神经网络的输出；然后运用反向传播（backpropagation）算法，计算代价函数对所有参数的偏导数，并讨论将初始化参数全部设为0所带来的问题。<br>（4）试给出一个神经网络（画出架构图，并写出激活函数及其对应的参数），使此训练样本集的5个训练样本点都可以被正确分类。</p>
+<hr>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a><strong>答案</strong></h3><p>**(1)**  作出的图如下，显然不存在一条直线可以将样本实现正确的分类。<br><img src="https://files.catbox.moe/uaeybg.png"></img><br>**(2)** 如果激活函数换成线性函数，那么无论神经网络有多少层，输出都是输入的线性组合，与没有隐藏层的效果相当，就成了最原始的感知器了，与不使用激活函数、直接使用逻辑回归没有区别。<br>**(3)**<br><img src="https://files.catbox.moe/r65t1w.png"></img></p>
+<p>由题意知$w_{i,j}=0,\theta_i=0$<br>使用第一条数据进行计算,输入$x_1=0,x_2=0,y=0$</p>
+<h4 id="正向传播"><a href="#正向传播" class="headerlink" title="正向传播"></a><strong>正向传播</strong></h4><p>$I_3= x_1*w_{13}+x_2*w_{23}+\theta_3=0*0+0*0+0=0$</p>
+<p>$O_3 = sigmoid(I_3) = 0.5$</p>
+<p>同理<br>$I_4 =0$<br>$O_4 = 0.5$<br>$I_5 =0$<br>$O_5 = 0.5$</p>
+<h4 id="反向传播计算误差对各参数的偏导数"><a href="#反向传播计算误差对各参数的偏导数" class="headerlink" title="反向传播计算误差对各参数的偏导数"></a><strong>反向传播计算误差对各参数的偏导数</strong></h4><p>$E=\frac{1}{2}*(target_5-O_5)^2$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{35}}=\displaystyle\frac{\partial I_5}{\partial   w_{35}}*\displaystyle\frac{\partial O_5}{\partial I_5}*\displaystyle\frac{\partial E}{\partial O_5}$</p>
+<p>$\displaystyle\frac{\partial E}{\partial O_5}=-(target_5-O_5)$</p>
+<p>$\displaystyle\frac{\partial O_5}{\partial I_5}=\displaystyle\frac{\partial \frac{1}{1+e^{-I_5}}}{\partial I_5}=O_5*(1-O_5)$</p>
+<p>$\displaystyle\frac{\partial I_5}{\partial   w_{35}}=\displaystyle\frac{\partial (w_{35}*O_3+w_{45}*O_4+\theta_5*1)}{\partial w_{35}}=O_3$</p>
+<p>$\therefore \displaystyle\frac{\partial E}{\partial w_{35}}=-O_5*(1-O_5)*(target_5-O_5)*O_3=-0.0625$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_5}=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}*\displaystyle\frac{\partial E}{\partial O_5}$</p>
+<p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}*\displaystyle\frac{\partial (w_{35}*O_3+w_{45}*O_4+\theta_5*1)}{\partial \theta_5}$</p>
+<p>$=\displaystyle\frac{\partial I_5}{\partial   \theta_5}*\displaystyle\frac{\partial O_5}{\partial I_5}$</p>
+<p>$=-O_5*(1-O_5)*(target_5-O_5)=-0.125$</p>
+<p>同理</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{45}}=-0.0625$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{13}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{14}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{23}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial w_{24}}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_4}=0$</p>
+<p>$\displaystyle\frac{\partial E}{\partial \theta_3}=0$</p>
+<h4 id="初始化参数全部设为0所带来的问题"><a href="#初始化参数全部设为0所带来的问题" class="headerlink" title="初始化参数全部设为0所带来的问题"></a><strong>初始化参数全部设为0所带来的问题</strong></h4><p>如果我们令所有的初始参数都为0，这将意味着我们第二层的所有激活单元都会有相同的值，那么隐藏神经元对输出单元的影响也是相同的，通过反向传播梯度下降法进行计算时，会得到同样的梯度大小，所以无论设置多少个隐藏单元，其最终的影响都是相同的。同理，也不能初始化所有的参数都为同一个非0的数。因此，要随机化初始参数，以打破对称性。</p>
+<p> <strong>(4)</strong><br> <img src="https://files.catbox.moe/r65t1w.png"></img><br>经训练后得到参数如下:</p>
+<p>$w_{ 1 3 }= -7.204$  $w_{ 2 3 }= 7.898$  $\theta_ 3 = 3.295$</p>
+<p>$w_{ 1 4 }= 0.139$  $w_{ 2 4 }= 6.273$  $\theta_4 = -2.906$</p>
+<p>$w_{ 3 5 }= -9.242$  $w_{ 4 5 }= 8.832$   $\theta_5 = 3.967$</p>
+<p>预测结果:<br><img src="https://files.catbox.moe/pp2os2.png"></img><br>通过结果来看，5个训练样本点都可以被正确分类</p>
+<h4 id="完整代码"><a href="#完整代码" class="headerlink" title="**完整代码**"></a>**完整代码**</h4><p><a href="https://github.com/Wenze7/DM/blob/master/associationRulesMine/BPNN.py">click here</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">神经网络</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/zfb.JPG" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.JPG" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/03/21/MAC%E5%92%8Ciphone%E4%B9%8B%E9%97%B4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8A%9B%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">MAC和iphone之间无法使用接力的解决办法</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/03/05/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%BD%9C%E4%B8%9A%E4%B8%80/">
+                <span class="level-item">神经网络作业一</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'O0P4snqgLnmubqnDqIS8jbqj-gzGzoHsz',
+        app_key: 'MYxx6TUU4WMljOulxHav5K3s',
+        placeholder: '如有不当之处，敬请指正！'
+    });
+</script>
+
+    </div>
+</div>
+
+
+
+
+
+
+    
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/avatar.jpg" alt="PQiu720">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        PQiu720
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        NONE
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>ShanDong,QingDao</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            17
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            6
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            15
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/wenze7" target="_blank" rel="noopener">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Github" href="https://github.com/wenze7">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Weibo" href="https://weibo.com/5663670406/profile?topnav=1&amp;wvr=6dd">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Zhihu" href="https://www.zhihu.com/people/pengqiu7">
+                
+                <i class="fab fa-zhihu"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1245666720&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
+                title="Twitter" href="http://www.baidu.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#题意">
+        <span class="has-mr-6">1</span>
+        <span>题意</span>
+        </a></li><li>
+        <a class="is-flex" href="#答案">
+        <span class="has-mr-6">2</span>
+        <span>答案</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#正向传播">
+        <span class="has-mr-6">2.1</span>
+        <span>正向传播</span>
+        </a></li><li>
+        <a class="is-flex" href="#反向传播计算误差对各参数的偏导数">
+        <span class="has-mr-6">2.2</span>
+        <span>反向传播计算误差对各参数的偏导数</span>
+        </a></li><li>
+        <a class="is-flex" href="#初始化参数全部设为0所带来的问题">
+        <span class="has-mr-6">2.3</span>
+        <span>初始化参数全部设为0所带来的问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#完整代码">
+        <span class="has-mr-6">2.4</span>
+        <span>**完整代码**</span>
+        </a></li></ul></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://catbox.moe" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">catbox</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">catbox.moe</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://blog.csdn.net/Insist_77" target="_blank" rel="noopener">
+                    <span class="level-left">
+                        <span class="level-item">CSDN</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">blog.csdn.net</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">学习笔记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%80%BB%E7%BB%93/">
+            <span class="level-start">
+                <span class="level-item">总结</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F/">
+            <span class="level-start">
+                <span class="level-item">推荐系统</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%99%E7%A8%8B/">
+            <span class="level-start">
+                <span class="level-item">教程</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">
+            <span class="level-start">
+                <span class="level-item">数据挖掘</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">10</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E8%B5%84%E6%BA%90%E6%80%BB%E7%BB%93/">
+            <span class="level-start">
+                <span class="level-item">资源总结</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/CART/" style="font-size: 10px;">CART</a> <a href="/tags/ID3/" style="font-size: 10px;">ID3</a> <a href="/tags/K-means/" style="font-size: 10px;">K-means</a> <a href="/tags/KNN/" style="font-size: 10px;">KNN</a> <a href="/tags/MAC/" style="font-size: 13.33px;">MAC</a> <a href="/tags/educoder/" style="font-size: 20px;">educoder</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/%E4%B8%8D%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0/" style="font-size: 10px;">不定时更新</a> <a href="/tags/%E4%BF%9D%E7%A0%94/" style="font-size: 10px;">保研</a> <a href="/tags/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98/" style="font-size: 13.33px;">关联规则挖掘</a> <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" style="font-size: 16.67px;">决策树</a> <a href="/tags/%E5%A4%9A%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" style="font-size: 10px;">多元线性回归</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 10px;">爬虫</a> <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" style="font-size: 13.33px;">神经网络</a> <a href="/tags/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86/" style="font-size: 10px;">贝叶斯定理</a>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/10/">
+                <span class="level-start">
+                    <span class="level-item">十月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    
+
+<footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="神经网络作业二" height="28">
+                
+                </a>
+                <p class="is-size-7">
+          
+                <!- &copy;  2020  seven7777777&nbsp;->
+                Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+               
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+   
+</footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
