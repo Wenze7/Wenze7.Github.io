@@ -144,6 +144,101 @@ var _hmt = _hmt || [];
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2021-09-12T09:34:25.083Z">2021-09-12</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1063 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2021/09/12/%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B/">序列模型</a>
+            
+        </h1>
+        <div class="content">
+            <p>-–</p>
+<p>categories: “nlp”</p>
+<p>tags:</p>
+<p>  - 序列模型</p>
+<p>toc: true</p>
+<p>-–</p>
+<h2 id="序列模型"><a href="#序列模型" class="headerlink" title="序列模型"></a>序列模型</h2><h3 id="序列模型举例"><a href="#序列模型举例" class="headerlink" title="序列模型举例"></a>序列模型举例</h3><ul>
+<li>日常生活中的序列模型<ul>
+<li>大地震发生后，后面会跟着几次余震</li>
+<li>预测股价</li>
+<li>……</li>
+</ul>
+</li>
+<li>自然语言中的序列模型<ul>
+<li>语言是连续的，“狗咬人”明显比“人咬狗”常见</li>
+<li>音乐歌词是通顺的</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+<h3 id="序列模型建模"><a href="#序列模型建模" class="headerlink" title="序列模型建模"></a>序列模型建模</h3><p>在时间$t$观察到$x_t$，那么得到$T$个<strong>不独立</strong>的随机变量$(x_1,…,x_T)～P(X)$,使用条件概率展开得到$p(a,b)=p(a)p(a|b)=p(b)p(a|b)$，那么有<br>$$<br>p(X) = p(x_1)·p(x_2|x_1)·p(x_3|x_1,x_2)·…·p(x_T|x_1,…,x_{T-1})<br>$$<br>也可以倒着推<br>$$<br>p(X) = p(x_T)·p(x_{T-1}|x_T)·p(x_{T-2}|x_{T-1},x_{T})·…·p(x_1|x_2,…,x_{T})<br>$$<br>但这个公式在实际中可以有意义也可能没意义，因此我们先只关注前向的公式</p>
+<p>我们对条件概率建模<br>$$<br>P(x_t|x_1,…,x_{t-1}=p(x_t|f(x_1,…,x_{t-1})))<br>$$<br>那么$p(x_t)$仅仅取决于$f(x_1,…,x_{t-1})$，像这种对之前见过的数据建模，称为<strong>自回归模型</strong></p>
+<h4 id="方案A-马尔科夫假设"><a href="#方案A-马尔科夫假设" class="headerlink" title="方案A - 马尔科夫假设"></a>方案A - 马尔科夫假设</h4><p>本方案假设当前的状态只跟前面固定$\tau$个状态有关系，即<br>$$<br>p(x_t|x_1,…,x_{t-1})=p(x_x|x_{t-\tau},…,x_{t-1})=p(x_t|f(x_{t-\tau},…,x_{t-1}))<br>$$<br>这种模型固定了影响因素的个数，因此可以用我们常用的一些算法来实现，比如最简单的MLP就可以，下面会有实现过程。</p>
+<h4 id="方案B-潜变量模型"><a href="#方案B-潜变量模型" class="headerlink" title="方案B - 潜变量模型"></a>方案B - 潜变量模型</h4><p>引入潜变量$h_t$来表示过去的信息$h_t=f(x_1,…,x_{t-1})$，这样$x_t=p(x_t|h_t)$</p>
+<img src="/Users/seven7777777/Library/Application Support/typora-user-images/image-20210912175937366.png" alt="image-20210912175937366" style="zoom:50%;" />
+
+<p>这种方案提出了两个问题：</p>
+<ul>
+<li>由$x_{t-1},h_{t-1}$求$h_t$</li>
+<li>由$x_{t-1},h_{t}$求$x_t$</li>
+</ul>
+<h3 id="马尔科夫假设的序列模型MLP的实现"><a href="#马尔科夫假设的序列模型MLP的实现" class="headerlink" title="马尔科夫假设的序列模型MLP的实现"></a>马尔科夫假设的序列模型MLP的实现</h3><p>这里我们取$\tau=4$，即当前状态仅和前面四个状态有关系。</p>
+<p>预测的任务选择加入噪音的$sin$函数，使用前600个点进行训练。在预测的时候我们不断的使用已知的4个点去预测下一个点（这里我们所有的点都是已知的）。</p>
+<p>预测的结果如图所示</p>
+<img src="/Users/seven7777777/Library/Application Support/typora-user-images/image-20210912183935895.png" alt="image-20210912183935895" style="zoom:50%;" />
+
+<p>其中蓝色的点为正常数据，橙色的点为我们预测的结果，从图上看大致可以预测正确。</p>
+<p>这种预测是连续的情况下，即我们下面使用不连续的预测，即从第600个点开始使用$x_{t-4},x_{t-3},x_{t-2},x_{t-1}$预测$x_{t}$，然后使用预测出的$x_t$和$x_{t-3},x_{t-2},x_{t-1}$预测$t_{t+1}$,不断的这样迭代下去得出下图</p>
+<img src="/Users/seven7777777/Library/Application Support/typora-user-images/image-20210912184538660.png" alt="image-20210912184538660" style="zoom:50%;" />
+
+<p>我们发现从第600个点开始预测结果趋于-1，这是因为我们的误差在不断的累积。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_weights</span><span class="params">(m)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> type(m) == nn.Linear:</span><br><span class="line">        nn.init.xavier_uniform_(m.weight)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Model</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(Model, self).__init__()</span><br><span class="line">        self.Linear_1 = nn.Linear(<span class="number">4</span>, <span class="number">10</span>)</span><br><span class="line">        self.Linear_2 = nn.Linear(<span class="number">10</span>, <span class="number">1</span>)</span><br><span class="line">        self.activate = nn.ReLU()</span><br><span class="line">        init_weights(self.Linear_1)</span><br><span class="line">        init_weights(self.Linear_2)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        out = self.Linear_2(self.activate(self.Linear_1(x)))</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    T = <span class="number">1000</span></span><br><span class="line">    time = torch.arange(<span class="number">1</span>, T + <span class="number">1</span>, dtype=torch.float32)</span><br><span class="line">    x = torch.sin(<span class="number">0.01</span> * time) + torch.normal(<span class="number">0</span>, <span class="number">0.2</span>, (T,))</span><br><span class="line"></span><br><span class="line">    tau = <span class="number">4</span></span><br><span class="line">    features = torch.zeros((T - tau, tau))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(tau):</span><br><span class="line">        features[:, i] = x[i:T - tau + i]</span><br><span class="line"></span><br><span class="line">    labels = x[tau:].reshape((<span class="number">-1</span>, <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    train_data, train_labels = features[:<span class="number">600</span>],labels[:<span class="number">600</span>]</span><br><span class="line">    <span class="keyword">return</span> train_data, train_labels, features, time, x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span><span class="params">(model, optimizer, loss, epochs, batch_size,train_data, train_labels)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(train_data),batch_size):</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            l = loss(model(train_data[i:i+batch_size]),train_labels[i:i+batch_size])</span><br><span class="line">            l.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line">        print(<span class="string">"epoch&#123;&#125;,loss:&#123;&#125;"</span>.format(epoch,l))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(model, x)</span>:</span></span><br><span class="line">    results = model(x)</span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw</span><span class="params">(x1, y1, x2, y2)</span>:</span></span><br><span class="line">    plt.plot(x1, y1, label=<span class="string">'real'</span>, linestyle=<span class="string">'-'</span>)</span><br><span class="line">    plt.plot(x2, y2, label=<span class="string">'predict'</span>, linestyle=<span class="string">':'</span>)</span><br><span class="line">    plt.show()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">one_step_predict</span><span class="params">(model, feature)</span>:</span></span><br><span class="line">    results = torch.zeros(<span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># print(results)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">600</span>,<span class="number">1000</span>):</span><br><span class="line">        out = model(feature)</span><br><span class="line">        results[i<span class="number">-600</span>] = out</span><br><span class="line">        feature = torch.cat((feature[<span class="number">1</span>:], torch.tensor([out.item()])), <span class="number">-1</span>)</span><br><span class="line">    print(results)</span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    train_data, train_labels, features, time, x = get_data()</span><br><span class="line">    model = Model()</span><br><span class="line">    optimizer = torch.optim.Adam(model.parameters(), <span class="number">0.01</span>)</span><br><span class="line">    loss = nn.MSELoss()</span><br><span class="line">    epochs = <span class="number">5</span></span><br><span class="line">    batch_size = <span class="number">16</span></span><br><span class="line">    train(model, optimizer, loss, epochs, batch_size,train_data, train_labels)</span><br><span class="line">    results = predict(model, features)</span><br><span class="line">    time_2 = torch.arange(<span class="number">5</span>, <span class="number">1001</span>, dtype=torch.float32)</span><br><span class="line">    draw(time, x, time_2, torch.tensor(results))</span><br><span class="line">    one_results = one_step_predict(model, features[<span class="number">600</span>])</span><br><span class="line">    time_2 = torch.arange(<span class="number">600</span>, <span class="number">1000</span>, dtype=torch.float32)</span><br><span class="line">    draw(time, x, time_2, torch.tensor(one_results))</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-10-15T07:43:20.546Z">2020-10-15</time>
                 
                 <div class="level-item">
@@ -750,72 +845,6 @@ var _hmt = _hmt || [];
     
 
 
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-03T07:35:15.429Z">2020-03-03</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/">数据挖掘</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    10 分钟 读完 (大约 1504 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-fpGrowth%E7%AE%97%E6%B3%95/">关联规则挖掘-fpGrowth算法</a>
-            
-        </h1>
-        <div class="content">
-            <h3 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h3><h4 id="什么是关联规则？"><a href="#什么是关联规则？" class="headerlink" title="什么是关联规则？"></a>什么是关联规则？</h4><p>见 <a href="http://seven7.xyz/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-apriori%E7%AE%97%E6%B3%95/">Apriori算法</a></p>
-<h4 id="几个重要概念"><a href="#几个重要概念" class="headerlink" title="几个重要概念"></a>几个重要概念</h4><p>见 <a href="http://seven7.xyz/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-apriori%E7%AE%97%E6%B3%95/">Apriori算法</a></p>
-<h4 id="fp-growth算法介绍"><a href="#fp-growth算法介绍" class="headerlink" title="fp-growth算法介绍"></a>fp-growth算法介绍</h4><ul>
-<li>打开你的搜索引擎，输入一个单词或一部分，例如“我”，搜索引擎可能会去统计和“我”一块出现得多的词，然后返回给你。其实就是去找频繁项集，而且需要相当地高效，像Apriori那样的速度肯定是不行的了。
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/03/03/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E6%8C%96%E6%8E%98-fpGrowth%E7%AE%97%E6%B3%95/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
 
     
 <div class="card card-transparent">
@@ -880,7 +909,7 @@ var _hmt = _hmt || [];
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            17
+                            18
                         </p>
                     </a>
                 </div>
@@ -1078,6 +1107,17 @@ var _hmt = _hmt || [];
         <ul class="menu-list">
         
         <li>
+            <a class="level is-marginless" href="/archives/2021/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2021</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
             <a class="level is-marginless" href="/archives/2020/10/">
                 <span class="level-start">
                     <span class="level-item">十月 2020</span>
@@ -1161,7 +1201,7 @@ var _hmt = _hmt || [];
                 </a>
                 <p class="is-size-7">
           
-                <!- &copy;  2020  Wenze7&nbsp;->
+                <!- &copy;  2021  Wenze7&nbsp;->
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
                
